@@ -7,15 +7,22 @@
     <meta name="keywords" lang="en" content="Timeline, Timemap, History, Chronology">
     <title>Covid 19 - Stay Informed</title>
 
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="../static/css/header.css" rel="stylesheet" type="text/css" />
     <link href="../static/css/ex1.css" rel="stylesheet" type="text/css" />
     <link href="../static/css/ex3.css" rel="stylesheet" type="text/css" />
-    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <link href="../static/css/clusterpies.css" rel="stylesheet" type="text/css" />
+
 
 </head>
 <body>
-    <div class="mmmm">
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js" charset="utf-8"></script>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <div>
         <div class="row">
             <div class="col-md-12">
                 <div class="header">
@@ -39,27 +46,44 @@
                 </div>
             </div>
         </div>
+
+        <hr>
+
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-7">
                 <div id="timeline"></div>
             </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-5">
                 <div id="map-container"></div>
                 <div id="timeline-container"></div>
             </div>
         </div>
+
         <hr>
 
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="container">
+                    <div id="map_legend"></div>
+                    <div id="map"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-12">
+            </div>
+        </div>
+
+        <hr>
     </div>
 
 
-    <script>
 
-
-    </script>
 
 </body>
 
@@ -68,6 +92,7 @@
     <script src="../static/js/ex1.js"></script>
     <script src="../static/js/topojson.v1.min.js"></script>
     <script src="../static/js/ex3.js"></script>
+    <script src="../static/js/marker_cluster.js"></script>
 </html>
 
 
@@ -77,4 +102,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.js"></script>
 <script type="text/javascript">myVar = myFunc()</script>
 <script src="../static/js/ex2.js"></script>
+    <script src="../static/js/marker_cluster.js"></script>
 -->

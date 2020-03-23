@@ -2,7 +2,7 @@
 var pthData = "./static/data/NYC_crime_sampled-with-random-days_n10000.csv"
 
 var marginTitle = { top: 20, left: 50},
-    mapWidth = 600,
+    mapWidth = 500,
     mapHeight = 300;
 
 var mapSvg = d3.select("#map-container").append("svg")
