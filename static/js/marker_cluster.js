@@ -12,8 +12,10 @@ var markerclusters = L.markerClusterGroup({
       maxClusterRadius: 2*rmax,
       iconCreateFunction: defineClusterIcon //this is where the magic happens
     });
+var initBounds = [38.8,0];
+var initZoom = 3;
 
-var map = L.map('map').setView([33.8, 0], 4);
+var map = L.map('map').setView(initBounds, initZoom);
 
 //Add basemap
 L.tileLayer(tileServer, {attribution: tileAttribution,  maxZoom: 15}).addTo(map);
@@ -171,7 +173,7 @@ d3.json(geojsonPath, function(error, data) {
       });
 
       markerclusters.addLayer(markers);
-      map.fitBounds(markers.getBounds());
+      //map.fitBounds(markers.getBounds());
       map.attributionControl.addAttribution(metadata.attribution);
 
       renderLegend();

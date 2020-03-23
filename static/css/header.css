@@ -9,9 +9,14 @@ body {
   overflow: hidden;
   background-color: #181818;
   padding: 10px 10px;
-    height:110px; !important;
+  height:60px; !important;
 }
-
+.im{
+  padding:0;
+  margin:0;
+  top:0;
+  position: relative;
+}
 .header a {
   float: left;
   color: whitesmoke;
@@ -19,7 +24,7 @@ body {
   padding: 12px;
   text-decoration: none;
   font-size: 18px;
-    height:100px;
+  height:100px;
   border-radius: 4px;
 }
 
@@ -39,7 +44,6 @@ body {
 }
 
 .header-left{
-    padding: 10px;
     text-align: center;
     color: white;
     font-size: 30px;
