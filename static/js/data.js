@@ -1,1 +1,1 @@
-function myFunc(vars) { return vars }
+//function myFunc(vars) { return vars } {{vars|tojson}}

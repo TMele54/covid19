@@ -507,3 +507,23 @@ function timeline(domElement) {
 
     return timeline;
 }
+
+
+var domElement = "#timeline";
+var sourceFile = "../static/data/ex1.csv";
+
+d3.csv(sourceFile, function(dataset) {
+
+    timeline(domElement)
+        .data(dataset)
+        .band("mainBand", 0.82)
+        .band("naviBand", 0.08)
+        .xAxis("mainBand")
+        .tooltips("mainBand")
+        .xAxis("naviBand")
+        .labels("mainBand")
+        .labels("naviBand")
+        .brush("naviBand", ["mainBand"])
+        .redraw();
+
+});
