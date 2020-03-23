@@ -6,19 +6,29 @@
     <meta name="keywords" lang="en" content="Timeline, Timemap, History, Chronology">
     <title>Covid 19</title>
 
-    <!-- That's the 'official' path. Comment out, when working locally. -->
+    <!-- That's the 'official' path. Comment out, when working locally.-->
     <script src="https://d3js.org/d3.v3.min.js"></script>
-
+    <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.js"></script>-->
     <!-- Store these two files in your application directory or on your path. -->
 
     <link href="../static/css/ex1.css" rel="stylesheet" type="text/css" />
-    <link href="../static/css/ex2.css" rel="stylesheet" type="text/css" />
+    <!--<link href="../static/css/ex2.css" rel="stylesheet" type="text/css" />-->
+    <link href="../static/css/ex3.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
+    <script>
+
+    </script>
 
     <div id="timeline"></div>
     <hr>
+
+    <div id="map-container"></div>
+    <div id="timeline-container"></div>
+    <hr>
+
+    <!--
     <div class="outerwrapper">
 
     <div class="timeline">
@@ -30,15 +40,15 @@
         <div class="tooltip">
             <p></p>
         </div>
-    </div> <!-- timeline -->
+    </div> <!-- timeline
 
     <div class="info-box">
         <div class="panel"></div>
     </div>
 
-    </div> <!-- outerwrapper -->
+    </div>  outerwrapper
 
-
+    -->
     <script>
 
         /*  You need a domElement, a sourceFile and a timeline.
@@ -120,5 +130,7 @@
 </body>
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="../static/js/ex1.js"></script>
-    <script src="../static/js/ex2.js"></script>
+    <!--<script src="../static/js/ex2.js"></script>-->
+    <script src="../static/js/topojson.v1.min.js"></script>
+    <script src="../static/js/ex3.js"></script>
 </html>

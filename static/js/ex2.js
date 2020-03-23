@@ -396,7 +396,7 @@ $.ajax({
 						/* draw the static triangle to act as a pointer */
 						chart.append("path")
 								.attr("d", "M10,0 L20,20 L0,20z")
-								.style("fill", colourBorder[0])
+								.style("fill", "red")
 								.style("pointer-events", "none")
 								.attr("transform", "translate(" + ((width / 2) - 10) + "," + height + ")");
 
@@ -629,16 +629,16 @@ $.ajax({
 								/*	Fade out the next/prev and zoom buttons when they are not available */
 								switch (counter) {
 										case 0:
-												leftIcon.style("fill", colourText[7]);
-												rightIcon.style("fill", colourText[1]);
+												leftIcon.style("fill", "orange");
+												rightIcon.style("fill", "purple");
 												break;
 										case (items.length - 1):
-												leftIcon.style("fill", colourText[1]);
-												rightIcon.style("fill", colourText[7]);
+												leftIcon.style("fill", "lightorange");
+												rightIcon.style("fill", "lightpurple");
 												break;
 										default:
-												leftIcon.style("fill", colourText[1]);
-												rightIcon.style("fill", colourText[1]);
+												leftIcon.style("fill", "darkorange");
+												rightIcon.style("fill", "darkpurple");
 												break;
 								}
 

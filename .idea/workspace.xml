@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e6dd331-1d5f-434e-969a-bf7aa44905ed" name="Default Changelist" comment="" />
+    <list default="true" id="3e6dd331-1d5f-434e-969a-bf7aa44905ed" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/static/css/ex3.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/data/NYC_crime_sampled-with-random-days_n10000.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/ex3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/nys2GeoJSON2.geojson.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/topojson.v1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/worldJSON.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/ex2.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/ex2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/covid_19.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/covid_19.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,37 +22,44 @@
     <session id="2059185673">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="2" />
-          <entry key="csv" value="1" />
+          <entry key="NYCboroughs" value="1" />
+          <entry key="css" value="3" />
+          <entry key="csv" value="3" />
           <entry key="html" value="1" />
-          <entry key="js" value="2" />
+          <entry key="js" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="2" />
-          <entry key="CSV" value="1" />
+          <entry key="CSS" value="3" />
+          <entry key="CSV" value="3" />
           <entry key="HTML" value="1" />
-          <entry key="JavaScript" value="2" />
+          <entry key="JavaScript" value="6" />
+          <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="76" />
-          <entry key="js" value="20" />
+          <entry key="NYCboroughs" value="2" />
+          <entry key="csv" value="2" />
+          <entry key="html" value="138" />
+          <entry key="js" value="193" />
           <entry key="py" value="77" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="76" />
-          <entry key="JavaScript" value="20" />
+          <entry key="CSV" value="2" />
+          <entry key="HTML" value="138" />
+          <entry key="JavaScript" value="193" />
+          <entry key="PLAIN_TEXT" value="2" />
           <entry key="Python" value="77" />
         </counts>
       </usages-collector>
@@ -59,64 +76,26 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/covid_19.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="98" column="41" selection-start-line="98" selection-start-column="41" selection-end-line="98" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/css/ex2.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="734">
-              <caret line="184" column="1" selection-start-line="184" selection-start-column="1" selection-end-line="184" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/js/ex2.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="270" column="58" selection-start-line="270" selection-start-column="58" selection-end-line="270" selection-end-column="58" />
+            <state relative-caret-position="420">
+              <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#893#1351#0#HTML" />
+                <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/data/ex1.csv">
-          <provider editor-type-id="csv-table-editor">
-            <state showInfoPanel="true" rowLines="3" />
-          </provider>
-          <provider selected="true" editor-type-id="csv-text-editor">
-            <state relative-caret-position="728">
-              <caret line="139" column="28" selection-start-line="139" selection-start-column="28" selection-end-line="139" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/css/ex1.css">
+        <entry file="file://$PROJECT_DIR$/static/js/ex3.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="734">
-              <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/ex1.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="399" column="19" selection-start-line="399" selection-start-column="19" selection-end-line="399" selection-end-column="19" />
+            <state relative-caret-position="2340">
+              <caret line="78" column="18" selection-start-line="78" selection-start-column="18" selection-end-line="78" selection-end-column="18" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -138,6 +117,10 @@
     <findStrings>
       <find>.csv</find>
       <find>colourBackground</find>
+      <find>colourBorder</find>
+      <find>classed</find>
+      <find>borough</find>
+      <find>nyc</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -152,8 +135,16 @@
         <option value="$PROJECT_DIR$/static/js/ex1.js" />
         <option value="$PROJECT_DIR$/static/css/ex2.css" />
         <option value="$PROJECT_DIR$/app.py" />
-        <option value="$PROJECT_DIR$/templates/covid_19.html" />
+        <option value="$PROJECT_DIR$/static/css/ex3.css" />
+        <option value="$PROJECT_DIR$/static/js/topojson.v1.min.js" />
+        <option value="$PROJECT_DIR$/static/js/worldJSON.js" />
+        <option value="$PROJECT_DIR$/static/js/nys2GeoJSON2.geojson.js" />
+        <option value="$PROJECT_DIR$/static/js/NYCboroughs" />
         <option value="$PROJECT_DIR$/static/js/ex2.js" />
+        <option value="$PROJECT_DIR$/static/data/NYC_crime_smapled-with-random-days_n10000.csv" />
+        <option value="$PROJECT_DIR$/static/js/NYC_crime_sampled-with-random-days_n10000.csv" />
+        <option value="$PROJECT_DIR$/static/js/ex3.js" />
+        <option value="$PROJECT_DIR$/templates/covid_19.html" />
       </list>
     </option>
   </component>
@@ -164,12 +155,14 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-12" />
-    <option name="y" value="-12" />
-    <option name="width" value="1526" />
-    <option name="height" value="1946" />
+    <option name="x" value="884" />
+    <option name="y" value="-34" />
+    <option name="width" value="1522" />
+    <option name="height" value="1932" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -186,6 +179,18 @@
               <item name="covid" type="b2602c69:ProjectViewProjectNode" />
               <item name="covid" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="covid" type="b2602c69:ProjectViewProjectNode" />
+              <item name="covid" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="covid" type="b2602c69:ProjectViewProjectNode" />
+              <item name="covid" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="covid" type="b2602c69:ProjectViewProjectNode" />
@@ -213,6 +218,9 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tonym\OneDrive\AAM_Portfolio\covid\static\js" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\tonym\OneDrive\AAM_Portfolio\covid\static\data" />
     </key>
@@ -262,7 +270,7 @@
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1513" height="973" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.09140894" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2879725" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
@@ -275,7 +283,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.523753" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32897863" />
       <window_info anchor="right" id="Remote Host" />
@@ -336,19 +344,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/covid_19.html">
+    <entry file="file://$PROJECT_DIR$/static/css/ex3.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="98" column="41" selection-start-line="98" selection-start-column="41" selection-end-line="98" selection-end-column="41" />
+        <state relative-caret-position="632">
+          <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/topojson.v1.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="1" column="6371" selection-start-line="1" selection-start-column="6371" selection-end-line="1" selection-end-column="6371" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/NYCboroughs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/ex2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="270" column="58" selection-start-line="270" selection-start-column="58" selection-end-line="270" selection-end-column="58" />
+        <state relative-caret-position="220">
+          <caret line="25" column="51" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/data/NYC_crime_sampled-with-random-days_n10000.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="626">
+          <caret line="10000" column="64" selection-start-line="10000" selection-start-column="64" selection-end-line="10000" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/worldJSON.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="102115" selection-start-column="102115" selection-end-column="102115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/nys2GeoJSON2.geojson.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="2" selection-end-line="139" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/NYC_crime_sampled-with-random-days_n10000.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/ex3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2340">
+          <caret line="78" column="18" selection-start-line="78" selection-start-column="18" selection-end-line="78" selection-end-column="18" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/covid_19.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <folding>
+            <element signature="e#893#1351#0#HTML" />
+            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
           </folding>
         </state>
       </provider>
