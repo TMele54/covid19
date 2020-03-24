@@ -1,47 +1,50 @@
-/*
-function call_data(db_path, fields, table, order_key, count){
-    var info_to_flask = JSON.stringify({"data": [db_path,fields,table,order_key,count]});
+function call_data(path, fields, table, where, order_by, group_by,  limit, Q, which){
+    if(which === "SQL"){
+        query = Q
+    }
+    else if(which === "piece_wise"){
+        
+        QString = 'SELECT ' + fields + ' FROM ' + table + ' WHERE ' + where + ' GROUP BY ' +
+        group_by + ' ORDER BY ' + order_by + '  LIMIT ' + limit;
+        query = [path, QString]
+    }
+    else{
+        $.ajax({
+            type: 'POST',
+            url: '/get_data',
+            contentType: 'application/json;charset=UTF-8',
+            success: function(data) {
+                console.log(JSON.stringify(data));
+            }
+        });
+    }
 
-    $.ajax({
-        type: "POST",
-        url: '{{url_for("get_data")}}',
-        data: info_to_flask,
-        dataType: "json",
-        success: function(data) {
-            alert("Success");
-            console.log(JSON.stringify(data));
-            alert("More Success");
-        },
-    });
 
 }
 
-var path = "covid-19-data-resource-hub/covid-19-case-counts";
-var fields =  'date, country_region, province_state, case_type, cases, ' +
-              'difference, prep_flow_runtime, latest_date, lat, long';
-var order_by = 'covid_19_cases';
-var table = 'covid_19_cases';
-var size = 1000;
+var _path = 'covid-19-data-resource-hub/covid-19-case-counts';
+var _fields =  'date, country_region, province_state, case_type, cases, difference, prep_flow_runtime, latest_date, lat, long';
+var _table = 'covid_19_cases';
+var _where = '';
+var _group_by = 'latest_date';
+var _order_by = 'latest_date';
+var _limit = 1000;
+Q = "";
 
-call_data(path, fields, table, order_by, size);
-*/
 
-function call_data(){
-    $.ajax({
-        type: "POST",
-        url: '/get_data',
-        contentType: 'application/json;charset=UTF-8',
-        success: function(data) {
-            console.log(JSON.stringify(data));
-        }
-    });
-}
-
-var path = "covid-19-data-resource-hub/covid-19-case-counts";
-var fields =  'date, country_region, province_state, case_type, cases, ' +
-  'difference, prep_flow_runtime, latest_date, lat, long';
-var order_by = 'latest_date';
-var table = 'covid_19_cases';
-var size = 1000;
-
-call_data();
+call_data(
+    'covid-19-data-resource-hub/covid-19-case-counts',
+    'date, country_region, province_state, case_type, cases, difference, prep_flow_runtime, latest_date, lat, long',
+    'covid_19_cases',
+    '',
+    'latest_date',
+    'latest_date',
+    "1000",
+    "SELECT country_region, province_state, location, lat, long, case_type, date, cases\n" +
+    "from covid_19_cases\n" +
+    "where cases !=0 and date = \"2020-03-22\"\n" +
+    "GROUP BY location, date, case_type\n" +
+    "ORDER BY country_region desc, province_state DESC, date DESC \n" +
+    "LIMIT 1000",
+    "SQL"
+);
