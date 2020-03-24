@@ -35,6 +35,7 @@ function defineFeature(feature, latlng) {
     return L.marker(latlng, {icon: myIcon});
 }
 function defineFeaturePopup(feature, layer) {
+
     var props = feature.properties;
     var fields = metadata.fields;
     var popupContent = '';
@@ -53,6 +54,7 @@ function defineFeaturePopup(feature, layer) {
     layer.bindPopup(popupContent,{offset: L.point(1,-2)});
 }
 function defineClusterIcon(cluster) {
+
     var children = cluster.getAllChildMarkers();
     var n = children.length;
     var strokeWidth = 1;
@@ -85,6 +87,7 @@ function bakeThePie(options) {
     if (!options.data || !options.valueFunc) {
         return '';
     }
+    
     var data = options.data;
     var valueFunc = options.valueFunc;
     var r = options.outerRadius?options.outerRadius:28;
@@ -100,6 +103,7 @@ function bakeThePie(options) {
     var h = w;
     var donut = d3.layout.pie();
     var arc = d3.svg.arc().innerRadius(rInner).outerRadius(r);
+    
 
     //Create an svg element
     var svg = document.createElementNS(d3.ns.prefix.svg, 'svg');
@@ -159,28 +163,33 @@ function serializeXmlNode(xmlNode) {
     }
     return "";
 }
+function call_data(){
 
+    $.ajax({
+        type: "POST",
+        url: '/get_data',
+        contentType: 'application/json;charset=UTF-8',
+        success: function(data) {
+            console.log("success")
+            console.log("SUCCESSFUL DATA:",data)
+            draw_map(data)
+        }
+    });
+}
+function draw_map(data){
+    //d3.json(geojsonPath, function(error, data) {
+    //geojson = data;
+    metadata = data.properties;
 
-//Ready to go, load the geojson
-d3.json(geojsonPath, function(error, data) {
-  if (!error) {
-      geojson = data;
-      metadata = data.properties;
-
-      var markers = L.geoJson(geojson, {
+    var markers = L.geoJson(data, {
         pointToLayer: defineFeature,
         onEachFeature: defineFeaturePopup
-      });
+    });
 
-      markerclusters.addLayer(markers);
-      //map.fitBounds(markers.getBounds());
-      map.attributionControl.addAttribution(metadata.attribution);
+    markerclusters.addLayer(markers);
 
-      renderLegend();
-
-  }
-  else
-      {
-        console.log('Could not load data...');
-      }
-});
+    //map.fitBounds(markers.getBounds());
+    map.attributionControl.addAttribution(metadata.attribution);
+    renderLegend();
+};
+call_data()
