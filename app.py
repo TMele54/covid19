@@ -14,13 +14,17 @@ def get_data():
 
     db_path = "covid-19-data-resource-hub/covid-19-case-counts"
 
-    Q = '''SELECT * FROM covid_19_cases ORDER BY latest_date ASC LIMIT 5000'''
+    # Q = '''SELECT * FROM covid_19_cases ORDER BY latest_date ASC LIMIT 5000'''
+
     Q = '''
-    SELECT *
-    FROM covid_19_cases
-    WHERE country_region = "US" and province_state = "New York"
-    ORDER BY date DESC
-    LIMIT 5000
+    
+            SELECT country_region, province_state, location, lat, long, case_type, date, cases
+            from covid_19_cases
+            where cases !=0 and date = "2020-03-22"
+            GROUP BY location, date, case_type
+            ORDER BY country_region desc, province_state DESC, date DESC 
+            LIMIT 1000
+    
     '''
 
     results = []
@@ -31,10 +35,10 @@ def get_data():
                 "fields": {
                         "5065": {
                             "lookup": {
-                                "1": "Pedestrian",
-                                "3": "Motorcycle",
-                                "2": "Bicycle",
-                                "4": "Car"
+                                "1": "Confirmed",
+                                "3": "Active",
+                                "2": "Recovered",
+                                "4": "Death"
                             },
                             "name":
                                 "Accident type"
@@ -43,17 +47,15 @@ def get_data():
                     },
                     "5074": {
                         "lookup": {
-                            "1": "Number of Death",
-                            "3": "Number of Recovered",
-                            "2": "Very serious injuries",
-                            "5": "No injuries",
-                            "4": "Minor injuries",
-                            "6": "Not recorded"
+                            "1": "Confirmed Cases",
+                            "2": "Active Cases",
+                            "3": "Recovered Cases",
+                            "4": "Losses"
                         },
-                        "name": "Injuries"
+                        "name": "Cases"
                     }}, "attribution":
-            "Traffic accidents: <a href=\"http://data.norge.no/data/nasjonal-vegdatabank-api\" target=\"blank\">NVDB</a>",
-                "description": "Traffic accidents in 2013 in Oslo, Norway"}}
+            "Traffic accidents: ",
+                "description": ""}}
 
     for i in range(0, len(query_results.table)):
 
@@ -65,11 +67,8 @@ def get_data():
 
         _geometry = {"geometry": {
                                     "type": "Point",
-                                    "coordinates": [float(record["long"]),float(record["lat"])]},
-                                    "type": "Feature",
-                                    "properties": { }
-                    }
-        _geometry["properties"] = {"5065": str(randint(0,10)), "5055": "2013-12-"+str(randint(1,30)), "5074": str(randint(0,10))}
+                                    "coordinates": [float(record["long"]),float(record["lat"])]},"type": "Feature","properties": { }}
+        _geometry["properties"] = {"5065": record["cases"], "5055": record["date"], "5074": record["cases"]}
         _features["features"].append(_geometry)
 
         results.append(record)

@@ -64,7 +64,7 @@ function defineClusterIcon(cluster) {
                     .entries(children, d3.map);
 
     var html = bakeThePie({data: data,
-                        valueFunc: function(d){return d.values.length;},
+                        valueFunc: function(d){return d.values.length;}, //this needs to take value from data, not leaves
                         strokeWidth: 1,
                         outerRadius: r,
                         innerRadius: r-10,
