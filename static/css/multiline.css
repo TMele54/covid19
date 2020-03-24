@@ -1,0 +1,47 @@
+body {
+  background: rgb(18,18,18);
+  color: #fff;
+}
+
+svg {
+  font-family: Sans-Serif, Arial;
+  // background: rgb(1,16,47);
+  
+}
+
+path { 
+    stroke-width: 2;
+    fill: none;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+circle { 
+  stroke-width: 2;
+  fill: rgb(1,16,47)
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: rgba(128,135,150, 0.6);
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+
+
+.axis text {
+  fill: #999;
+  font-size: .8rem;
+}
+
+.legend, .label, .hover-text{
+    font-size: small;
+}
+
+.x.axis line  {
+  stroke-dasharray: 4;
+}
+
+.svg-wrapper {
+  width: 800px;
+}

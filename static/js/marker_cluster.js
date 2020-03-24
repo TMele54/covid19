@@ -1,11 +1,14 @@
 "use strict";
-var geojson, metadata;
+var geojson;
+var metadata;
 var map_legend = '#map_legend';
 var geojsonPath = '../static/data/geoJSONPie.json';
 var categoryField = '5074';
 var iconField = '5065';
 var popupFields = ['5065','5055','5074'];
 var tileServer = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+var tileServer = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png';
+var tileServer = 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png';
 var tileAttribution = 'Map data: <a href="http://openstreetmap.org">OSM</a>';
 var rmax = 30; //Maximum radius for cluster pies
 var markerclusters = L.markerClusterGroup({
@@ -33,7 +36,7 @@ function defineFeature(feature, latlng) {
     });
 
     return L.marker(latlng, {icon: myIcon});
-}
+};
 function defineFeaturePopup(feature, layer) {
 
     var props = feature.properties;
@@ -52,27 +55,37 @@ function defineFeaturePopup(feature, layer) {
 });
     popupContent = '<div class="map-popup">'+popupContent+'</div>';
     layer.bindPopup(popupContent,{offset: L.point(1,-2)});
-}
+};
 function defineClusterIcon(cluster) {
 
     var children = cluster.getAllChildMarkers();
     var n = children.length;
     var strokeWidth = 1;
     var r = rmax-2*strokeWidth-(n<10?12:n<100?8:n<1000?4:0);
-    var iconDim = (r+strokeWidth)*2;
-    var data = d3.nest().key(function(d) { return d.feature.properties[categoryField]; })
-                    .entries(children, d3.map);
+    var iconDim = (r+strokeWidth)*3;
+    var data = d3.nest().key(function(d) {return d.feature.properties[categoryField]; }).entries(children, d3.map);
 
     var html = bakeThePie({data: data,
-                        valueFunc: function(d){return d.values.length;}, //this needs to take value from data, not leaves
-                        strokeWidth: 1,
-                        outerRadius: r,
-                        innerRadius: r-10,
-                        pieClass: 'cluster-pie',
-                        pieLabel: n,
-                        pieLabelClass: 'marker-cluster-pie-label',
-                        pathClassFunc: function(d){return "category-"+d.data.key;},
-                        pathTitleFunc: function(d){return metadata.fields[categoryField].lookup[d.data.key]+' ('+d.data.values.length+' accident'+(d.data.values.length!=1?'s':'')+')';}
+                        valueFunc: function(d){
+                            return parseInt(d.values[0].feature.properties["5065"]); },
+                            strokeWidth: 1,
+                            outerRadius: r,
+                            innerRadius: r-10,
+                            pieClass: 'cluster-pie',
+                            pieLabel: n,
+                            pieLabelClass: 'marker-cluster-pie-label',
+                            pathClassFunc: function(d){return "category-"+d.data.key; },
+                            pathTitleFunc: function(d){
+                               // var X = d.data.values;
+                               // var Y = 0
+                               // var cases = d.data.values[0].feature.properties.cases
+                               // X.forEach(function(d){
+                              //      Y+=parseInt(d.feature.properties.cases)
+                               // })
+                                var cases = d.data.values[0].feature.properties.cases
+                               // console.log(Y)
+                                /*return metadata.fields[categoryField].lookup[d.data.key]+' ('+d.data.values.length+' accident'+(d.data.values.length!=1?'s':'')+')';}*/
+                                return metadata.fields[categoryField].lookup[d.data.key]+' ('+cases+' accident'+(cases!=1?'s':'')+')';}
                       });
 
 
@@ -81,7 +94,7 @@ function defineClusterIcon(cluster) {
     });
 
     return myIcon;
-}
+};
 function bakeThePie(options) {
 
     if (!options.data || !options.valueFunc) {
@@ -103,41 +116,41 @@ function bakeThePie(options) {
     var h = w;
     var donut = d3.layout.pie();
     var arc = d3.svg.arc().innerRadius(rInner).outerRadius(r);
-    
 
     //Create an svg element
     var svg = document.createElementNS(d3.ns.prefix.svg, 'svg');
 
     //Create the pie chart
     var vis = d3.select(svg)
-        .data([data])
-        .attr('class', pieClass)
-        .attr('width', w)
-        .attr('height', h);
+                    .data([data])
+                    .attr('class', pieClass)
+                    .attr('width', w)
+                    .attr('height', h);
 
     var arcs = vis.selectAll('g.arc')
-        .data(donut.value(valueFunc))
-        .enter().append('svg:g')
-        .attr('class', 'arc')
-        .attr('transform', 'translate(' + origo + ',' + origo + ')');
+                    .data(donut.value(valueFunc))
+                    .enter().append('svg:g')
+                    .attr('class', 'arc')
+                    .attr('transform', 'translate(' + origo + ',' + origo + ')');
 
     arcs.append('svg:path')
-        .attr('class', pathClassFunc)
-        .attr('stroke-width', strokeWidth)
-        .attr('d', arc)
-        .append('svg:title')
-        .text(pathTitleFunc);
+                    .attr('class', pathClassFunc)
+                    .attr('stroke-width', strokeWidth)
+                    .attr('d', arc)
+                    .append('svg:title')
+                    .text(pathTitleFunc);
 
     vis.append('text')
-        .attr('x',origo)
-        .attr('y',origo)
-        .attr('class', pieLabelClass)
-        .attr('text-anchor', 'middle')
-        .attr('dy','.3em')
-        .text(pieLabel);
+                    .attr('x',origo)
+                    .attr('y',origo)
+                    .attr('class', pieLabelClass)
+                    .attr('text-anchor', 'middle')
+                    .attr('dy','.3em')
+                    .attr("fill", 'white')
+                    .text(pieLabel);
 
     return serializeXmlNode(svg);
-}
+};
 function renderLegend() {
     var data = d3.entries(metadata.fields[categoryField].lookup),
         legenddiv = d3.select(map_legend).append('div').attr('id','legend');
@@ -154,7 +167,7 @@ function renderLegend() {
         .attr('class',function(d){return 'category-'+d.key;})
         .classed({'legenditem': true})
         .text(function(d){return d.value;});
-}
+};
 function serializeXmlNode(xmlNode) {
     if (typeof window.XMLSerializer != "undefined") {
         return (new window.XMLSerializer()).serializeToString(xmlNode);
@@ -162,7 +175,7 @@ function serializeXmlNode(xmlNode) {
         return xmlNode.xml;
     }
     return "";
-}
+};
 function call_data(){
 
     $.ajax({
@@ -175,7 +188,7 @@ function call_data(){
             draw_map(data)
         }
     });
-}
+};
 function draw_map(data){
     //d3.json(geojsonPath, function(error, data) {
     //geojson = data;
@@ -192,4 +205,5 @@ function draw_map(data){
     map.attributionControl.addAttribution(metadata.attribution);
     renderLegend();
 };
-call_data()
+
+call_data();

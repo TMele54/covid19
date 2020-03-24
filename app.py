@@ -1,11 +1,9 @@
 from flask import Flask, render_template, jsonify, request
-
 from modules.dataworld import dw
 import collections
 import json
 import pprint
 ppr = pprint.PrettyPrinter(indent=4)
-from random import randint
 app = Flask(__name__)
 
 
@@ -13,19 +11,16 @@ app = Flask(__name__)
 def get_data():
 
     db_path = "covid-19-data-resource-hub/covid-19-case-counts"
-
-    # Q = '''SELECT * FROM covid_19_cases ORDER BY latest_date ASC LIMIT 5000'''
-
     Q = '''
     
             SELECT country_region, province_state, location, lat, long, case_type, date, cases
             from covid_19_cases
-            where cases !=0 and date = "2020-03-22"
+            where cases !=0 and date = "2020-03-22" and province_state not like "%princess%" 
             GROUP BY location, date, case_type
             ORDER BY country_region desc, province_state DESC, date DESC 
             LIMIT 1000
-    
-    '''
+            
+        '''
 
     results = []
     query_results = dw.query(db_path, Q)
@@ -36,26 +31,22 @@ def get_data():
                         "5065": {
                             "lookup": {
                                 "1": "Confirmed",
-                                "3": "Active",
-                                "2": "Recovered",
-                                "4": "Death"
+                                "2": "Death"
                             },
                             "name":
                                 "Accident type"
                         }, "5055": {
-                        "name": "Date"
+                        "name": "Updated"
                     },
                     "5074": {
                         "lookup": {
-                            "1": "Confirmed Cases",
-                            "2": "Active Cases",
-                            "3": "Recovered Cases",
-                            "4": "Losses"
+                            "1": "Confirmed",
+                            "2": "Deaths"
                         },
                         "name": "Cases"
                     }}, "attribution":
-            "Traffic accidents: ",
-                "description": ""}}
+            "CoViD: ",
+                "description": "Global Cases"}}
 
     for i in range(0, len(query_results.table)):
 
@@ -65,10 +56,27 @@ def get_data():
         for key, value in od.items():
             record[key] = str(value)
 
-        _geometry = {"geometry": {
-                                    "type": "Point",
-                                    "coordinates": [float(record["long"]),float(record["lat"])]},"type": "Feature","properties": { }}
-        _geometry["properties"] = {"5065": record["cases"], "5055": record["date"], "5074": record["cases"]}
+        if record["case_type"] == "Confirmed":
+            record["case_type_value"] = "1"
+        else:
+            record["case_type_value"] = "2"
+
+
+        _geometry = {
+            "geometry": {
+                "type": "Point",
+                "coordinates":  [record["long"], record["lat"]]
+            },
+            "type": "Feature",
+            "properties": { }
+        }
+
+        _geometry["properties"] = {
+            "5065": record["case_type_value"],
+            "5055": record["date"],
+            "5074": record["case_type_value"],
+            "cases": record["cases"]
+        }
         _features["features"].append(_geometry)
 
         results.append(record)
@@ -80,7 +88,6 @@ def get_data():
 
 @app.route('/covid19')
 def covid19():
-
     return render_template('covid_19.html')
 
 

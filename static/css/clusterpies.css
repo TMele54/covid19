@@ -1,11 +1,11 @@
 #map {
-  width:1200px;
-  height:500px;
+  width:100%;
+  height:600px;
 }
 #legend {
   position: absolute;
   top: 3px;
-  left: 1200px;
+  left: 90%;
   margin: 10px;
   padding: 5px;
   border-radius: 5px;
@@ -35,6 +35,7 @@
   font-size: 14px;
   font-weight: bold;
   font-family: sans-serif;
+  fill: antiquewhite; !important;
 }
 
 /*Markers*/
@@ -66,10 +67,10 @@
   border-color: #070;
 }
 .category-2{
-  fill: #FF3;
-  stroke: #D80;
-  background: #FF3;
-  border-color: #D80;
+  fill: #F88;
+  stroke: #800;
+  background: #F88;
+  border-color: #800;
 }
 .category-3{
   fill: #FA0;
@@ -78,30 +79,30 @@
   border-color: #B60;
 }
 .category-4{
-  fill: #F88;
-  stroke: #800;
-  background: #F88;
-  border-color: #800;
+  fill: #FF3;
+  stroke: #D80;
+  background: #FF3;
+  border-color: #D80;
 }
 
 /*marker icons*/
 .icon-1{
-  background-image: url('running-16.png');
+  /*background-image: url('running-16.png');*/
   background-repeat: no-repeat;
   background-position: 0px 1px;
 }
 .icon-2{
-  background-image: url('bicycle-16.png');
+  /*background-image: url('bicycle-16.png');*/
   background-repeat: no-repeat;
   background-position: 1px 0px;
 }
 .icon-3{
-  background-image: url('motorcycle-16.png');
+  /*background-image: url('motorcycle-16.png');*/
   background-repeat: no-repeat;
   background-position: 1px 0px;
 }
 .icon-4{
-  background-image: url('car-16.png');
+  /*background-image: url('car-16.png');*/
   background-repeat: no-repeat;
   background-position: 1px 0px;
 }
