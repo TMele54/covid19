@@ -101,7 +101,7 @@ function horizontal_bar(data){
     }
 }
 
-
+/*
 var _path = 'covid-19-data-resource-hub/covid-19-case-counts';
 var _fields =  'date, country_region, province_state, case_type, cases, difference, prep_flow_runtime, latest_date, lat, long';
 var _table = 'covid_19_cases';
@@ -114,7 +114,13 @@ _Q = "select country_region,  max(cases) as Confirmed\n" +
     "where case_type=\"Confirmed\"\n" +
     "GROUP BY country_region\n" +
     "order by Confirmed DESC";
-_which="SQL"
+_which="SQL";
 
 var data = call_data(_path, _fields, _table, _where, _order_by, _group_by,  _limit, _Q, _which)
-horizontal_bar(data)
+horizontal_bar(data)*/
+
+query = "select country_region,  max(cases) as Confirmed\n" +
+    "from covid_19_cases\n" +
+    "where case_type=\"Confirmed\"\n" +
+    "GROUP BY country_region\n" +
+    "order by Confirmed DESC"

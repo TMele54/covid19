@@ -30,13 +30,11 @@ function defineFeature(feature, latlng) {
     var categoryVal = feature.properties[categoryField];
     var iconVal = feature.properties[iconField];
     var myClass = 'marker category-'+categoryVal+' icon-'+iconVal;
-    var myIcon = L.divIcon({
-        className: myClass,
-        iconSize:null
-    });
+    var myIcon = L.divIcon({ className: myClass, iconSize:null });
 
     return L.marker(latlng, {icon: myIcon});
 };
+//not here
 function defineFeaturePopup(feature, layer) {
 
     var props = feature.properties;
@@ -65,9 +63,7 @@ function defineClusterIcon(cluster) {
     var iconDim = (r+strokeWidth)*3;
     var data = d3.nest().key(function(d) {return d.feature.properties[categoryField]; }).entries(children, d3.map);
 
-    var html = bakeThePie({data: data,
-                        valueFunc: function(d){
-                            return parseInt(d.values[0].feature.properties["5065"]); },
+    var html = bakeThePie({data: data, valueFunc: function(d){ return parseInt(d.values[0].feature.properties["5065"]); },
                             strokeWidth: 1,
                             outerRadius: r,
                             innerRadius: r-10,
@@ -84,8 +80,8 @@ function defineClusterIcon(cluster) {
                                // })
                                 var cases = d.data.values[0].feature.properties.cases
                                // console.log(Y)
-                                /*return metadata.fields[categoryField].lookup[d.data.key]+' ('+d.data.values.length+' accident'+(d.data.values.length!=1?'s':'')+')';}*/
-                                return metadata.fields[categoryField].lookup[d.data.key]+' ('+cases+' accident'+(cases!=1?'s':'')+')';}
+                                return metadata.fields[categoryField].lookup[d.data.key]+' ('+d.data.values.length+' accident'+(d.data.values.length!=1?'s':'')+')';}
+                                /*return metadata.fields[categoryField].lookup[d.data.key]+' ('+cases+' accident'+(cases!=1?'s':'')+')';}*/
                       });
 
 
@@ -176,20 +172,24 @@ function serializeXmlNode(xmlNode) {
     }
     return "";
 };
-function call_data(){
+function call_data_q(Q) {
+    $('#loadingMap').css('visibility', 'visible');
+    $('#map').css('visibility', 'hidden');
+    $('#map_legend').css('visibility', 'hidden');
 
     $.ajax({
         type: "POST",
-        url: '/get_data',
-        contentType: 'application/json;charset=UTF-8',
-        success: function(data) {
-            console.log("success")
-            console.log("SUCCESSFUL DATA:",data)
-            draw_map(data)
+        url: "/get_data",
+        data: {"data": Q},
+        success: function (_data) {
+
+            draw_map(_data);
         }
-    });
-};
+    })
+
+}
 function draw_map(data){
+
     //d3.json(geojsonPath, function(error, data) {
     //geojson = data;
     metadata = data.properties;
@@ -204,6 +204,27 @@ function draw_map(data){
     //map.fitBounds(markers.getBounds());
     map.attributionControl.addAttribution(metadata.attribution);
     renderLegend();
+
+    $('#loadingMap').remove()         // show loading indicator
+    $('#map').css('visibility', 'visible');          // show loading indicator
+    $('#map_legend').css('visibility', 'visible');          // show loading indicator
 };
 
-call_data();
+call_data_q(0);
+
+
+/*
+
+function call_data(){
+
+    $.ajax({
+        type: "POST",
+        url: '/get_data',
+        contentType: 'application/json;charset=UTF-8',
+        success: function(data) {
+            draw_map(data)
+        }
+    });
+
+};
+* */

@@ -227,3 +227,4 @@ d3.json("https://api.myjson.com/bins/rczxa", function(data) {
     multiline(data)
 });
 
+//call_data()

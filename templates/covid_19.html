@@ -25,6 +25,7 @@
     }
 
     </style>
+    <link rel="icon" href="../static/img/icons8-connect-48.png" sizes="48x48 96x96" type="image/png">
 
 </head>
 <body>
@@ -56,11 +57,18 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-12">
-                <div id="map_legend"></div>
-                <div id="map"></div>
+                <div id="loadingMap" align="center">
+                    <img src="../static/img/hands.gif" height="400px">
+                    <div class="">Please watch while we load data..</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="map_legend" style="visibility: hidden"></div>
+                <div id="map" style="visibility: hidden"></div>
             </div>
         </div>
 
@@ -107,26 +115,22 @@
 
 
 </body>
-
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-
-  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
     <script src="../static/js/ex1.js"></script>
     <script src="../static/js/topojson.v1.min.js"></script>
     <script src="../static/js/ex3.js"></script>
     <script src="../static/js/marker_cluster.js"></script>
     <script src="../static/js/multiline.js"></script>
-<script src="https://gist.githubusercontent.com/mscook/b21a1877cba76565937a/raw/84eca7af32928c8496b0db05ebdbea1ecc1cfc98/d3.v2.js"></script>
     <script src="../static/js/hbar.js"></script>
 </html>
 
 
 
 <!--
-
-
-
+   <script src="../static/js/loaders.js"></script>
     <script src="../static/js/data.js"></script>
+
 <link href="../static/css/ex2.css" rel="stylesheet" type="text/css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.js"></script>
 <script type="text/javascript">myVar = myFunc()</script>

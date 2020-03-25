@@ -9,22 +9,27 @@ app = Flask(__name__)
 
 @app.route('/get_data', methods=['GET', 'POST'])
 def get_data():
+    if request.method == "POST":
+        V = request.form["data"]
+        V = int(V)
+        print("INPUT FROM JS:",V)
+
+    if V == 0:
+        Q = '''
+            SELECT country_region, province_state, location, lat, long, case_type, date, cases 
+            from covid_19_cases 
+            where date='2020-03-23' and province_state not like '%princess%'
+            GROUP BY location, date, case_type  
+            ORDER BY country_region ASC, province_state DESC, date DESC  
+            LIMIT 1000
+        '''
+    if V == 1:
+        Q = '''SELECT * FROM covid_19_cases'''
 
     db_path = "covid-19-data-resource-hub/covid-19-case-counts"
-    Q = '''
-    
-            SELECT country_region, province_state, location, lat, long, case_type, date, cases
-            from covid_19_cases
-            where cases !=0 and date = "2020-03-22" and province_state not like "%princess%" 
-            GROUP BY location, date, case_type
-            ORDER BY country_region desc, province_state DESC, date DESC 
-            LIMIT 1000
-            
-        '''
 
     results = []
     query_results = dw.query(db_path, Q)
-
     _features = {"type": "FeatureCollection", "features": []}
     _properties = {"properties": {
                 "fields": {
@@ -83,6 +88,17 @@ def get_data():
 
     _features["properties"] = _properties["properties"]
 
+    #Enumerate for marker cluster
+    feats_temp = []
+    if V == 0:
+        for feature in _features["features"]:
+            number_of_instances = int(feature["properties"]["cases"])
+            for j in range(0, number_of_instances):
+                feats_temp.append(feature)
+
+    _features["features"] = feats_temp
+
+    # ppr.pprint(_features)
     return jsonify(_features)
 
 
@@ -96,6 +112,16 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 '''
+
+Q = 
+    
+            SELECT country_region, province_state, location, lat, long, case_type, date, cases
+            from covid_19_cases
+            where cases !=0 and date = "2020-03-22" and province_state not like "%princess%" 
+            GROUP BY location, date, case_type
+            ORDER BY country_region desc, province_state DESC, date DESC 
+            LIMIT 1000
+            
 fields = 'date, country_region, province_state, case_type, cases, difference, prep_flow_runtime, latest_date, lat, long'
     order_key = 'latest_date'
     table = 'covid_19_cases'
