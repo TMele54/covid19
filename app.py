@@ -23,83 +23,107 @@ def get_data():
             ORDER BY country_region ASC, province_state DESC, date DESC  
             LIMIT 1000
         '''
-    if V == 1:
-        Q = '''SELECT * FROM covid_19_cases'''
 
-    db_path = "covid-19-data-resource-hub/covid-19-case-counts"
+        db_path = "covid-19-data-resource-hub/covid-19-case-counts"
 
-    results = []
-    query_results = dw.query(db_path, Q)
-    _features = {"type": "FeatureCollection", "features": []}
-    _properties = {"properties": {
-                "fields": {
-                        "5065": {
-                            "lookup": {
-                                "1": "Confirmed",
-                                "2": "Death"
-                            },
-                            "name":
-                                "Accident type"
-                        }, "5055": {
-                        "name": "Updated"
+        results = []
+        query_results = dw.query(db_path, Q)
+        _features = {"type": "FeatureCollection", "features": []}
+        _properties = {"properties": {
+            "fields": {
+                "5065": {
+                    "lookup": {
+                        "1": "Confirmed",
+                        "2": "Death"
                     },
-                    "5074": {
-                        "lookup": {
-                            "1": "Confirmed",
-                            "2": "Deaths"
-                        },
-                        "name": "Cases"
-                    }}, "attribution":
-            "CoViD: ",
-                "description": "Global Cases"}}
+                    "name":
+                        "Accident type"
+                }, "5055": {
+                    "name": "Updated"
+                },
+                "5074": {
+                    "lookup": {
+                        "1": "Confirmed",
+                        "2": "Deaths"
+                    },
+                    "name": "Cases"
+                }}, "attribution":
+                "CoViD: ",
+            "description": "Global Cases"}}
 
-    for i in range(0, len(query_results.table)):
+        for i in range(0, len(query_results.table)):
 
-        record = {}
-        od = query_results.table[i]
+            record = {}
+            od = query_results.table[i]
 
-        for key, value in od.items():
-            record[key] = str(value)
+            for key, value in od.items():
+                record[key] = str(value)
 
-        if record["case_type"] == "Confirmed":
-            record["case_type_value"] = "1"
-        else:
-            record["case_type_value"] = "2"
+            if record["case_type"] == "Confirmed":
+                record["case_type_value"] = "1"
+            else:
+                record["case_type_value"] = "2"
 
+            _geometry = {
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [record["long"], record["lat"]]
+                },
+                "type": "Feature",
+                "properties": {}
+            }
 
-        _geometry = {
-            "geometry": {
-                "type": "Point",
-                "coordinates":  [record["long"], record["lat"]]
-            },
-            "type": "Feature",
-            "properties": { }
-        }
+            _geometry["properties"] = {
+                "5065": record["case_type_value"],
+                "5055": record["date"],
+                "5074": record["case_type_value"],
+                "cases": record["cases"]
+            }
+            _features["features"].append(_geometry)
 
-        _geometry["properties"] = {
-            "5065": record["case_type_value"],
-            "5055": record["date"],
-            "5074": record["case_type_value"],
-            "cases": record["cases"]
-        }
-        _features["features"].append(_geometry)
+            results.append(record)
 
-        results.append(record)
+        _features["properties"] = _properties["properties"]
 
-    _features["properties"] = _properties["properties"]
-
-    #Enumerate for marker cluster
-    feats_temp = []
-    if V == 0:
+        # Enumerate for marker cluster
+        feats_temp = []
         for feature in _features["features"]:
             number_of_instances = int(feature["properties"]["cases"])
             for j in range(0, number_of_instances):
                 feats_temp.append(feature)
 
-    _features["features"] = feats_temp
+        _features["features"] = feats_temp
 
-    # ppr.pprint(_features)
-    return jsonify(_features)
+        return jsonify(_features)
+    elif V == 1:
+        Q = '''
+                select country_region,  max(cases) as Confirmed
+                from covid_19_cases
+                where case_type="Confirmed"
+                GROUP BY country_region
+                order by Confirmed DESC 
+                limit 5  
+            '''
+
+        db_path = "covid-19-data-resource-hub/covid-19-case-counts"
+
+        results = []
+        query_results = dw.query(db_path, Q)
+
+        for i in range(0, len(query_results.table)):
+
+            record = {}
+            od = query_results.table[i]
+
+            for key, value in od.items():
+                record[key] = str(value)
+            results.append(record)
+
+        return jsonify(results)
+    else:
+        Q = ''''''
+        return "ERROR..."
+
 
 
 @app.route('/covid19')

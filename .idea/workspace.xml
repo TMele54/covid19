@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e6dd331-1d5f-434e-969a-bf7aa44905ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/img/hands.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/icons8-connect-48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/icons8-connect-96.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/loaders.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/header.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/hbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/hbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/marker_cluster.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/marker_cluster.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/multiline.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/multiline.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/covid_19.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/covid_19.html" afterDir="false" />
     </list>
@@ -111,7 +106,7 @@
       <updated>1584945510905</updated>
       <workItem from="1584955379978" duration="4272000" />
       <workItem from="1584960377177" duration="7641000" />
-      <workItem from="1584968681613" duration="55793000" />
+      <workItem from="1584968681613" duration="58762000" />
     </task>
     <servers />
   </component>

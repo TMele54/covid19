@@ -25,7 +25,7 @@ function multiline(data){
 
     var color = d3.scale.category10();
 
-    var xAxis = d3.svg.axis().scale(x).tickSize(-height).orient("bottom");
+    var xAxis = d3.svg.axis().scale(x).tickSize(-height).orient("bottom").ticks(5);
 
     var yAxis = d3.svg.axis().scale(y).orient("left");
 

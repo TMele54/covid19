@@ -6,10 +6,12 @@ body {
 }
 
 .header {
+   position: fixed;
   overflow: hidden;
   background-color: #181818;
   padding: 10px 10px;
-  height:60px; !important;
+  height:60px !important;
+  width: 100%;
 }
 .im{
   padding:0;
